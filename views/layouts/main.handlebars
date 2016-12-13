@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>{{title}}</title>
-
+  <link rel="stylesheet" type = "text/css" href="../../public/css/style.css">
   <!-- semantic UI -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
   <style type="text/css">
@@ -15,11 +15,12 @@
   <div class="ui middle aligned center aligned grid">
     <div class="ui fixed inverted main menu">
       <h1 class="item header"><a href="/gallery">Drawing Stuff on Stuff!</a></h1>
+      <a class="item" href="./">Gallery</a>
+      <a class="item" href="./create">Create</a>
       <div class="right menu">
       {{#if user}}
         <a href="/profile" class="item">{{user.username}}</a>
         <a href="/logout" class="item">Logout</a>
-        <a href="/treat" class="item">Treat</a>
         {{else}}
           <a href="/signup" class="item">Signup</a>
           <a href="/login" class="item">Login</a>

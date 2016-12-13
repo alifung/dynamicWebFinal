@@ -1,3 +1,28 @@
 <h1>This is the gallery!!</h1>
-<img src> />
-<img src> />
+{{#each Cheeses}}
+
+	<div class="the-sketch">
+		{{#if filename}}
+			<div class="imageGallery"><img src="/uploads/{{filename}}"></div>
+		{{/if}}
+		<h3>{{tag}}</h3>
+	</div>
+{{/each}}
+
+<div class="ui three column grid">
+  <div class="column">
+    <div class="ui segment">
+      <img>
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui segment">
+      <img>
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui segment">
+      <img>
+    </div>
+  </div>
+</div>

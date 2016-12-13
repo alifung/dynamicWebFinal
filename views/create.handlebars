@@ -3,39 +3,108 @@
 <script type="text/javascript" src="../js/paper.js"></script>
 <!-- Define inlined PaperScript associate it with myCanvas -->
 <script type="text/paperscript" canvas="myCanvas">
-<!-- 	var path;
+	//load and place image
+	//
+	//  var secondLayer = new paper.layer();
+	//  secondLayer.activate();
 
-	// Only execute onMouseDrag when the mouse
-	// has moved at least 10 points:
-	tool.distanceThreshold = 10;
+	//  svg attempts:
 
-	tool.onMouseDown = function(event) {
-	    // Create a new path every time the mouse is clicked
-	    path = new Path();
-	    path.add(event.point);
-	    path.strokeColor = 'black';
-	}
+	//  var svg = project.importSVG(['img/starter.svg');
 
-	tool.onMouseDrag = function(event) {
-	    // Add a point to the path every time the mouse is dragged
-	    path.add(event.point);
-	}
+	//  drawing stuff
+	    var path;
+	    
 
-	//project.activelayers -->
-</script>
+	    // Only execute onMouseDrag when the mouse
+	    // has moved at least 10 points:
+	    tool.distanceThreshold = 10;
+
+	    tool.onMouseDown = function(event) {
+	        // Create a new path every time the mouse is clicked
+	        path = new Path();
+	        path.add(event.point);
+	        path.strokeColor = new Color(0);
+	        path.strokeColor.alpha = 0.5;
+	        path.fillColor.alpha = .5; 
+	        closed: true;
+
+	    path.fullySelected = true;
+	    path.strokeCap = 'round';
+	    };
+
+
+
+
+	    tool.onMouseDrag = function(event) {
+	        // Add a point to the path every time the mouse is dragged
+	        path.add(event.point);
+	    }
+
+	    tool.onMouseUp = function(event) {
+	        path.selected = false;
+	        path.smooth();
+	    }
+
+	//functions from p5
+
+
+	//make slider
+	$('#stroke-weight').change(function(e) { 
+	        path.strokeWidth = e.target.valueAsNumber; 
+	});
+
+	$('#stroke-color').change(function(e) { 
+	        path.strokeColor = e.target.valueAsNumber; 
+	});
+
+	$('#opacity').change(function(e) { 
+	        path.strokeColor.alpha = e.target.valueAsNumber; 
+	        path.fillColor.alpha = e.target.valueAsNumber; 
+	});
+
+
+	</script>
 </head>
 <body>
-	<canvas id="myCanvas" resize></canvas>
 
-	<form action="/gallery/create" method="post" enctype="multipart/form-data" id ="form">
-		<input id="username" name="username" type="hidden">
-	  	<input id="image" type="file" name="image" accepts="image/*">
-
-	  <input type="submit">
-
-	<!-- other form that instead of posting saves? -->
-	</form action="/gallery/create" method="post" enctype="multipart/form-data" id ="form">
-	<input type="save">
+		<form action="/gallery/create" method="post" enctype="multipart/form-data" id ="form">
+			<input id="username" name="username" type="hidden">
+			<input label="save" type="save">
+			<input label="save" type="submit">	
 	</form>
+<div id="menu"> 
+<ul>
+	<li><h1>thickness</h1>
+	        <input id="stroke-weight" type="range" min="1" max="10" value="0" step="1" /> 
+	</li> 
+
+	<li> 
+	<h1>brightness</h1>
+	        <input id="stroke-color" type="range" min="0" max="1" value="0" step="0.1" /> 
+	</li> 
+
+	<li> 
+	<h1>opacity</h1>
+	        <input id="opacity" type="range" min="0" max="1" value="0" step="0.1" /> 
+	</li> 
+	<ul>
+</div>
+
+	
+	<!-- other form that instead of posting saves? -->
+{{!-- 	</form action="/gallery/create" method="post" enctype="multipart/form-data" id ="form">
+		<input type="save">
+			<button class ="ui button"><input type="submit"></button>
+		<input type="submit">	
+		<button class ="ui button"><input type="submit"></button>
+
+	</form>
+ --}}{{!-- paper stuff  --}}
+
+<canvas id="myCanvas" style="position: absolute; top:500px; border: 5px solid black;" resize></canvas>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
 </body>
 </html>
