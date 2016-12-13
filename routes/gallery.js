@@ -58,7 +58,7 @@ router.post('/create', upload.single('image'), function(req, res) {
         if (err) {
             console.log(err);
 
-            return res.redirect(404, 'gallery/create'); // if error, return to the main display. should I add flash message here to say there was an error?
+            return res.redirect(404, './create'); // if error, return to the main display. should I add flash message here to say there was an error?
         }
 
         return res.redirect('./'); //if success, return to the main gallery
@@ -85,7 +85,7 @@ router.get('/yoursketch:id', function(req, res) {
     //can also do base64 from the server or send from browser to cloudinary, get id from cloudinary, and save it to database. make sure that databse knows where to find data on cloudinary
     
 
-router.get('yoursketch', function(req, res) {
+router.get('/yoursketch', function(req, res) {
     //console.log(res.render(_id));
 
     var query = {}

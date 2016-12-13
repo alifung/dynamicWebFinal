@@ -1,6 +1,6 @@
 <head>
 <!-- Load the Paper.js library -->
-<script type="text/javascript" src="/javascript/paper.js"></script>
+<script type="text/javascript" src="/javascript/paper-full.min.js"></script>
 <!-- Define inlined PaperScript associate it with myCanvas -->
 <script type="text/paperscript" canvas="myCanvas">
 	//load and place image
@@ -9,7 +9,6 @@
 	//  secondLayer.activate();
 
 	//  svg attempts:
-
 	//  var svg = project.importSVG(['img/starter.svg');
 
 	//  drawing stuff
@@ -81,11 +80,11 @@
 
 	</form>
  --}}{{!-- paper stuff  --}}
-<div id="theCanvas" style="padding: 5%; float: left; height: 100%">
-	<canvas id="myCanvas" resize style=" height: 100%; width: 80%; position: relative; top:80%; left: 40px; border: 5px solid black; text-align: center; "></canvas>
+<div id="theCanvas" style="padding-right: 5%; float: left; height: 100%">
+	<canvas id="myCanvas" resize style=" height: 100%; width: 80%; position: relative; left: 10%; border: 5px solid black; text-align: center; "></canvas>
 </div>
-<div id="menu" style=""> 
-	<ul style = "list-style: none; display: inline-block; float: left; border: 4px solid;">
+<div id="menu" style="position: relative;"> 
+	<ul style = "list-style: none; display: inline-block; float: left;">
 		<li><h2>thickness</h2>
 		        <input id="stroke-weight" type="range" min="1" max="10" value="0" step="1" /> 
 		</li> 

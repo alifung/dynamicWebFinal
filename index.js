@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+var path = require('path');
 
 var app = express(); //express examples uses var router
 
@@ -34,6 +35,11 @@ app.use(session({
     })
 }));
 
+app.use(function(req, res, next){
+    res.locals.flash = req.session.flash;
+    delete req.session.flash;
+    next();
+});
 // var router = express.Router();
 
 // router.get('/', function(req, res){
@@ -68,11 +74,7 @@ app.use('/gallery', gallery); //connecting to the gallery.js -- so you know wher
 
 
 
-app.use(function(req, res, next){
-    res.locals.flash = req.session.flash;
-    delete req.session.flash;
-    next();
-});
+
 
 var auth = require('./lib/auth')(app, options);
 auth.init();
@@ -95,7 +97,7 @@ app.get('/treat', function (req, res) {
     res.redirect('/');
 });
 
-// cookie deletion
+//cookie deletion
 app.get('/clear', function (req, res) {
     delete req.session.treat;
     //res.clearCookie('treat');
@@ -108,6 +110,7 @@ app.get('/clear', function (req, res) {
     res.redirect('/');
 });
 
+app.use(express.static(path.join(__dirname + '/public')));
 
 // start server
 app.listen(portNum, function() {

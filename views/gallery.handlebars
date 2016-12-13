@@ -2,10 +2,11 @@
 {{#each Cheeses}}
 
 	<div class="the-sketch">
-		{{#if filename}}
-			<div class="imageGallery"><img src="/uploads/{{filename}}"></div>
+		{{#if submitted}}
+			<div class="imageGallery">
+        <img src="/uploads/{{filename}}">
+      </div>
 		{{/if}}
-		<h3>{{tag}}</h3>
 	</div>
 {{/each}}
 
