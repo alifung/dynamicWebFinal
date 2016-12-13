@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<script src="paper-full.min.js"></script>
+
+  <title>{{title}}</title>
+
+</head>
+<body>
+
+<section style="position: absolute; bottom: 0; left: 0; right: 0; z- 
+index: 2;"> 
+<h1>This is siiiize</h1>
+        <input id="stroke-weight" type="range" min="1" max="10" value="0" step="1" /> 
+</section> 
+
+<section style="position: absolute; bottom: 0; left: 40; right: 0; z- 
+index: 2;"> 
+<h1>This is brightness?</h1>
+        <input id="stroke-color" type="range" min="0" max="1" value="0" step="0.1" /> 
+</section> 
+
+<section style="position: absolute; bottom: 30; left: 80; right: 0; z- 
+index: 2;"> 
+<h1> this hsould be opacity</h1>
+        <input id="opacity" type="range" min="0" max="1" value="0" step="0.1" /> 
+</section> 
+
+
+<div id = "ui container">
+<canvas id="myCanvas" width="1000" height="800">
+<script type="text/paperscript" canvas="myCanvas">
+//load and place image
+    var weight;
+//
+//  var secondLayer = new paper.layer();
+//  secondLayer.activate();
+
+//  svg attempts:
+
+//  var svg = project.importSVG(['img/starter.svg');
+
+//  drawing stuff
+    var path;
+    
+
+    // Only execute onMouseDrag when the mouse
+    // has moved at least 10 points:
+    tool.distanceThreshold = 10;
+
+    tool.onMouseDown = function(event) {
+        // Create a new path every time the mouse is clicked
+        path = new Path();
+        path.add(event.point);
+        path.strokeColor = new Color(0);
+        path.strokeColor.alpha = 0.5;
+        path.fillColor.alpha = .5; 
+        closed: true;
+
+    path.fullySelected = true;
+    path.strokeCap = 'round';
+    };
+
+
+
+
+    tool.onMouseDrag = function(event) {
+        // Add a point to the path every time the mouse is dragged
+        path.add(event.point);
+    }
+
+    tool.onMouseUp = function(event) {
+        path.selected = false;
+        path.smooth();
+    }
+
+//functions from p5
+
+
+//make slider
+$('#stroke-weight').change(function(e) { 
+        path.strokeWidth = e.target.valueAsNumber; 
+});
+
+$('#stroke-color').change(function(e) { 
+        path.strokeColor = e.target.valueAsNumber; 
+});
+
+$('#opacity').change(function(e) { 
+        path.strokeColor.alpha = e.target.valueAsNumber; 
+        path.fillColor.alpha = e.target.valueAsNumber; 
+});
+
+
+</script>
+</canvas>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</body>
+</html>
