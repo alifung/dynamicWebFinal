@@ -3,7 +3,15 @@
 <script type="text/javascript" src="/javascript/paper-full.min.js"></script>
 <!-- Define inlined PaperScript associate it with myCanvas -->
 <script type="text/paperscript" canvas="myCanvas">
-project.importSVG(document.getElementById('svg'));
+// project.importSVG(document.getElementById('svg'));
+// <svg version="1.1" id="svg" <svg xmlns="img/starter.svg" xmlns:xlink="img/starter.svg" width="595" height="800">
+// <symbol id="#circle" viewBox="0 0 48 48" overflow="visible">
+// 	<path fill="#FF0049" d="M24, 0c0-13.255-10.745-24-24-24S-24-13.255-24,0s10.725,24,24,24S24,13.255,24,0Z"/>
+// </symbol>
+// <use xlink:href=#circle" width="48" height="48" x="-24" transform="maxtrix(1.16671.1667 1.667 -1.1667 177.0005 96)"/>
+
+
+
 
 	// load and place image
 	
@@ -83,10 +91,10 @@ project.importSVG(document.getElementById('svg'));
 	</form>
  --}}
 
- <svg xmlns="img/starter.svg"
+ 
+<div id="wholeShabang" style="margin-top: 400px;">
 
-
-<div id="theCanvas" style="padding-right: 5%; float: left; height: 100% width: 1000px;">
+<div id="theCanvas" style="position: top: 4000px; padding-right: 5%; float: left; height: 80% width: 1000px;">
 	<canvas id="myCanvas" resize style=" height: 100%; width: 800px; position: relative; left: 10%; border: 5px solid black; text-align: center; "></canvas>
 </div>
 <div id="menu" style="position: relative;"> 
@@ -110,6 +118,7 @@ project.importSVG(document.getElementById('svg'));
 			<input label="save" type="save">
 			<input label="save" type="submit">	
 		</form>
+</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
