@@ -3,15 +3,17 @@
 <script type="text/javascript" src="/javascript/paper-full.min.js"></script>
 <!-- Define inlined PaperScript associate it with myCanvas -->
 <script type="text/paperscript" canvas="myCanvas">
-	load and place image
-	
-	 var secondLayer = new paper.layer();
-	 secondLayer.activate();
+project.importSVG(document.getElementById('svg'));
 
-	 svg attempts:
+	// load and place image
+	
+	 // var secondLayer = new paper.layer();
+	 // secondLayer.activate();
+
+	 // svg attempts:
 	 var svg = project.importSVG('img/starter.svg');
 
-	 drawing stuff
+	 // drawing stuff
 	    var path;
 	    
 
@@ -79,9 +81,13 @@
 		<button class ="ui button"><input type="submit"></button>
 
 	</form>
- --}}{{!-- paper stuff  --}}
+ --}}
+
+ <svg xmlns="img/starter.svg"
+
+
 <div id="theCanvas" style="padding-right: 5%; float: left; height: 100% width: 1000px;">
-	<canvas id="myCanvas" resize style=" height: 100%; width: 80%; position: relative; left: 10%; border: 5px solid black; text-align: center; "></canvas>
+	<canvas id="myCanvas" resize style=" height: 100%; width: 800px; position: relative; left: 10%; border: 5px solid black; text-align: center; "></canvas>
 </div>
 <div id="menu" style="position: relative;"> 
 	<ul style = "list-style: none; display: inline-block; float: left;">
