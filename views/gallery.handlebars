@@ -10,10 +10,18 @@
 	</div>
 {{/each}}
 
+
+    {{#if submitted}}
+        <img src="/uploads/{{filename}}"/>
+    {{/if}}
+
+
 <div class="ui three column grid">
   <div class="column">
     <div class="ui segment">
-      <img>
+      {{#if submitted}}
+        <img src="/uploads/{{filename}}"/>
+    {{/if}}
     </div>
   </div>
   <div class="column">
