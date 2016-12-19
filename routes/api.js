@@ -69,6 +69,22 @@ router.post('/galleryPost', function(req, res, next) {
 // //set new = true - check out the options on the mongoose.js docs //how do I add this???
 
 // //so save automatically, also need route to SUBMIT! //probs need to use ajax to gather info from form
+router.get('/galleryPost', function (req, res, next) {
+	sketch.findOne(_id, function(err, data) {
+		if (err) {
+			res.status(500);
+			return res.json({
+				status: 'error',
+				message: 'gallery images could not be found :( '
+			});
+		}
+		return res.json(data);
+	});
+});
+
+//if user, render that route
+
+
 
 
 router.get('/galleryPost', function (req, res, next) {

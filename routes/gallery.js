@@ -41,15 +41,15 @@ router.post('/create', upload.single('image'), function(req, res) {
         myFileName = req.file.filename;
     }
 
+
 //file in the things in the categories of the schema
     var newsketch = new galleryPost({
 
             filename: myFileName,
-            //imageURL: ,
-           // artist: username, //I need to define this? artist.username? how do I get it? 
-            submitted: false,
-            // new: Boolean
-             //save the filename
+            // imageURL: 
+            //artist: username, //I need to define this? artist.username? how do I get it? 
+            //submitted: false;// when there is a submitted and not submitted version
+            submitted: true
     });
 
     console.log(myFileName);
@@ -66,37 +66,25 @@ router.post('/create', upload.single('image'), function(req, res) {
     });
 });
 
-router.get('/yoursketch:id', function(req, res) {
-    Cheese.find({ '_id': req.params.id }, function(err, data) {
-        if (err) {
-            console.log(err);
-        }
-        var pageData = {
-            galleryPost: data
-        }
-        console.log(data);
-        return res.render('', pageData);
-    });
-});
-
 //get image data, and then get image data to save as image file on server
     //var dataURL = canvas.toDataURL(); 
     //document.queryselector('canvas').toURL(); //maybe with cloudinary? its a base64 image. look at cloudinary's jquery plugin. - you have to store the image ID or URL in database
     //can also do base64 from the server or send from browser to cloudinary, get id from cloudinary, and save it to database. make sure that databse knows where to find data on cloudinary
+    // var dataURL= canvas.toDataURL();
     
 
-router.get('/yoursketch', function(req, res) {
+router.get('/profile', function(req, res) {
     //console.log(res.render(_id));
 
     var query = {}
     if (req.query.id) {
         query = { id: req.query.id };
     }
-    yoursketch.find(query), (function(err, data) {
+    Picture.find(query), (function(err, data) {
         var pageData = {
-            cheeses: data
+            galleryPost: data
         };
-        res.render('yoursketch' + data._id, pageData);
+        res.render('profile' + data._id, pageData);
     });
 });
 

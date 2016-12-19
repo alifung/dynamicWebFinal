@@ -1,5 +1,4 @@
-<svg id="svg" 
-	 viewBox="0 0 796 511" style="enable-background:new 0 0 796 511;" xml:space="preserve">
+<svg id="svg" viewBox="0 0 796 511" style="enable-background:new 0 0 796 511;" xml:space="preserve" >
 <style type="text/css">
 	.st0{fill:#53A4E0;}
 </style>
@@ -28,6 +27,8 @@ project.importSVG(document.getElementById('svg'));
 
 	 // svg attempts:
 	 var svg = project.importSVG('img/starter.svg');
+
+
 
 	 // drawing stuff
 	    var path;
@@ -80,6 +81,12 @@ project.importSVG(document.getElementById('svg'));
 	        path.fillColor.alpha = e.target.valueAsNumber; 
 	});
 
+	
+
+	document.getElementById("submitButton").onclick = function () {
+			var submittedPicture = project.exportJSON();
+			console.log(submittedPicture);
+	};
 
 </script>
 </head>
@@ -99,7 +106,6 @@ project.importSVG(document.getElementById('svg'));
 	</form>
  --}}
 
- 
 <div id="wholeShabang" style="margin-top: 40%;">
 <h2>Draw on the blob to create your own image! If you're not ready to submit yet, don't worry! You can save it and come back to it too!</h2>
 
@@ -123,9 +129,11 @@ project.importSVG(document.getElementById('svg'));
 		</li> 
 		<ul>
 		<form action="/gallery/create" method="post" enctype="multipart/form-data" id ="form">
-			<input id="username" name="username" type="hidden">
-			<input label="save" type="save">
-			<input label="save" type="submit">	
+			<input id="username" name="username" type="hidden"/>
+			<input id="image" type="hidden" type="file" name="image" accepts="image/*" />
+
+			{{!-- <input label="save" type="save"> --}}
+			<input label="save" type="submit" id="submitButton"/>	
 		</form>
 </div>
 </div>
